@@ -18,6 +18,20 @@ that they scored an A
 
 using namespace std;
 
+
+//TODO: how would I test this? I think I need to do the following:
+// - break functional code into a class.
+// - separate out the cin call, so I can mock this by setting a variable on
+//   the class.
+// - Use something like cppunit/gtest to create a test file that imports that
+//   class (seems like they work off the class definition in a header file.
+// - Either do string matching (yuck) or have the grade/state output, with the
+//   cout line generated later on.
+// - random links:
+// http://www.comp.nus.edu.sg/~cs3214s/tools/cppunitSol.html
+// http://www.yolinux.com/TUTORIALS/Cpp-GoogleTest.html
+// https://github.com/google/googletest
+// http://cppunit.sourceforge.net/doc/lastest/index.html
 int main()
 {
     int score;
