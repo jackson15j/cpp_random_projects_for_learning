@@ -6,7 +6,7 @@ project(graded_program)
 enable_testing()
 # Stricter build rules.
 # can double check this with: make VERBOSE=1
-add_definitions(-ansi -pedantic-errors -Wall)
+add_definitions(-ansi -pedantic-errors -Wall -std=c++11)
 
 # Build libraries.
 add_library(graded_funcs graded_funcs.cpp)

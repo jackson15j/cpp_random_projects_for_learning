@@ -14,6 +14,7 @@ that they scored an A
 ★★ Modify the program so that it will notify the user of their letter grade
 0-59 F 60-69 D 70-79 C 80-89 B 90-100 A
 */
+#include <array>
 #include <iostream>
 #include "graded_funcs.hpp"
 
@@ -39,10 +40,11 @@ int main()
 {
     int score;
     string grade;
+    array<string, 6> grades = {{"A", "B", "C", "D", "F", "U"}};
     cout << "Enter a score (0-100): ";
     cin >> score;
     grade = get_grade(score);
-    if ((score > 100) || (score < 0))
+    if (grade == "X")
     {
         cout << score << ", is not between: 0-100." << endl;
         return 1;
@@ -50,28 +52,16 @@ int main()
     if (grade == "P")
     {
         cout << "You got a perfect score" << endl;
+        cout << "A score of: " << score << ", gets you a grade of: A" << endl;
     }
-    if ((score >= 90) && (score <= 100))
+    for (int i = 0; i < int(grades.size()); ++i)
     {
-        cout << "A score of: " << score << ", gets you an: A" << endl;
+        if (grade == grades[i])
+        {
+            cout << "A score of: " << score << ", gets you a grade of: " << grade << endl;
+        }
     }
-    if ((score >= 80) && (score <= 89))
-    {
-        cout << "A score of: " << score << ", gets you a: B" << endl;
-    }
-    if ((score >= 70) && (score <= 79))
-    {
-        cout << "A score of: " << score << ", gets you a: C" << endl;
-    }
-    if ((score >= 60) && (score <= 69))
-    {
-        cout << "A score of: " << score << ", gets you a: D" << endl;
-    }
-    if ((score >= 50) && (score <= 59))
-    {
-        cout << "A score of: " << score << ", gets you an: F" << endl;
-    }
-    if (score < 50)
+    if (grade == "U")
     {
         cout << "We don't give marks below 50." << endl;
     }
