@@ -1,5 +1,6 @@
 // https://github.com/philsquared/Catch
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
+#include <string>
 #include "catch.hpp"
 #include "../graded_funcs.hpp"
 
@@ -52,5 +53,26 @@ TEST_CASE("Test get_grade function.")
         REQUIRE(get_grade(score) == "X");
         score = -1;
         REQUIRE(get_grade(score) == "X");
+    }
+}
+
+TEST_CASE("Test grade_printer.")
+{
+    int score = 99;
+    std::string grade = "A";
+    SECTION("Lets check that printer returns true for good grades")
+    {
+        REQUIRE(grade_printer(grade, score) == true);
+    }
+
+    SECTION("Now lets check that printer returns false for out of bounds grades.")
+    {
+        score = 101;
+        grade = "X";
+        REQUIRE(grade_printer(grade, score) == false);
+
+        score = -1;
+        grade = "X";
+        REQUIRE(grade_printer(grade, score) == false);
     }
 }
