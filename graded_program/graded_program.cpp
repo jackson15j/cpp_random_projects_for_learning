@@ -15,6 +15,7 @@ that they scored an A
 0-59 F 60-69 D 70-79 C 80-89 B 90-100 A
 */
 #include <iostream>
+#include "graded_funcs.hpp"
 
 using namespace std;
 
@@ -32,17 +33,21 @@ using namespace std;
 // http://www.yolinux.com/TUTORIALS/Cpp-GoogleTest.html
 // https://github.com/google/googletest
 // http://cppunit.sourceforge.net/doc/lastest/index.html
+
+
 int main()
 {
     int score;
+    string grade;
     cout << "Enter a score (0-100): ";
     cin >> score;
+    grade = get_grade(score);
     if ((score > 100) || (score < 0))
     {
         cout << score << ", is not between: 0-100." << endl;
         return 1;
     }
-    if (score == 100)
+    if (grade == "P")
     {
         cout << "You got a perfect score" << endl;
     }
