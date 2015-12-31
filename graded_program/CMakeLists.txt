@@ -4,6 +4,9 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(graded_program)
 enable_testing()
+# Stricter build rules.
+# can double check this with: make VERBOSE=1
+add_definitions(-ansi -pedantic-errors -Wall)
 
 # Build libraries.
 add_library(graded_funcs graded_funcs.cpp)
