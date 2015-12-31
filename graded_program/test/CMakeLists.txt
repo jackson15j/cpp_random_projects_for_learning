@@ -8,3 +8,6 @@ add_executable(test_graded_program test_graded_program.cpp)
 # public include directories we will use those link directories when building
 # graded_funcsDemo
 target_link_libraries (test_graded_program LINK_PUBLIC graded_funcs)
+
+# Add unittests: https://cmake.org/cmake/help/v3.0/command/add_test.html
+add_test(test_graded_program test_graded_program)

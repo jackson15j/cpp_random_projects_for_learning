@@ -32,3 +32,9 @@ How to Build
 There should be a graded\_program executable in root of <build\_folder> and a
 test\_graded\_program in <build\_folder/test/>.
 
+An easy one liner if you have created the build directory at project root.
+
+~~~{.sh}
+cmake .. && make clean && make && make test
+~~~
+

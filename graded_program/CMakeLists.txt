@@ -3,6 +3,7 @@
 
 cmake_minimum_required(VERSION 2.8.12)
 project(graded_program)
+enable_testing()
 
 # Build libraries.
 add_library(graded_funcs graded_funcs.cpp)
