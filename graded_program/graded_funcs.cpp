@@ -6,6 +6,20 @@
 using namespace std;
 
 
+/*! get_grade
+  Gets the grade from a supplied score. Returned grades:
+  100 = P
+  90-100 = A
+  80-99 = B
+  70-79 = C
+  60-69 = D
+  50-59 = F
+  0-50 = U
+  <0, >100 = X
+
+  @param score int expected 0-100.
+  @returns grade string {"P", "A", "B", "C", "D", "F", "U", "X"}
+*/
 string get_grade(int& score)
 {
     if (score == 100)
@@ -40,6 +54,15 @@ string get_grade(int& score)
 }
 
 
+/*! grade_printer
+
+  Prints grade and score as a string, and also returns bool state if grade is
+  in range or not.
+
+  @params grade string {"P", "A", "B", "C", "D", "F", "U", "X"}.
+  @params score int
+  @returns bool.
+ */
 bool grade_printer(string& grade, int& score)
 {
     array<string, 6> grades = {{"A", "B", "C", "D", "F", "U"}};
