@@ -39,7 +39,7 @@ test\_graded\_program in <build\_folder/test/>.
 
 An easy one liner if you have created the build directory at project root.
 
-~~~{.sh}
+```bash
 cmake .. && make clean && make && make test
-~~~
+```
 
