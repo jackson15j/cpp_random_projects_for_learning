@@ -5,7 +5,8 @@
 
 
 /**
-   Boost Example.
+   Boost Example
+   =============
 
    * https://www.boost.org/doc/libs/1_67_0/more/getting_started/unix-variants.html
 
@@ -19,6 +20,16 @@
    string was:
 
    `c++ boost_example.cpp -o boost_example && echo 1 2 3 | ./boost_example`
+
+   Boost.Build
+   -----------
+
+   * Added `Jamroot.jam`.
+   * Compile string on my system is now (FIXME: When `b2` guesses `gcc`, the
+     build fails. Assume it's grabbing a different version??):
+
+     `b2 toolset=gcc && echo 1 2 3 | bin/gcc-8.2.0/debug/./boost_example`
+   :
  */
 int main() {
     using namespace boost::lambda;
