@@ -1,1 +1,1 @@
-exe boost_example : boost_example.cpp ;
+exe boost_example : [ glob *.cpp ] : : <variant>debug <variant>release ;
