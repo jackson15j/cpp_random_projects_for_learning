@@ -1,0 +1,34 @@
+# https://docs.travis-ci.com/user/languages/cpp/
+language: cpp
+
+compiler:
+  - gcc
+
+before_install:
+  # $HOME = `/home/travis/`.
+  # BASE_PATH = `/home/travis/build/<github_user>/<repo>/` ie. code workdir.
+  - BASE_PATH=$(pwd)
+  - sudo apt-get install libboost-all-dev
+  # FIXME: don't have a debian system handy and my google-fu has failed me to
+  # find what boost-build is called in the `apt` package manager. Hence the
+  # manual install.
+  # https://boostorg.github.io/build/manual/develop/index.html#bbv2.installation
+  #
+  # Change up one directory so that boost-build libraries are not mixed with
+  # the workdir.
+  - cd $BASE_PATH/../
+  - wget https://github.com/boostorg/build/archive/boost-1.67.0.tar.gz
+  - tar -xf boost-1.67.0.tar.gz
+  - cd build-boost-1.67.0/
+  - ./bootstrap.sh
+  - ./b2 install --prefix=$BASE_PATH
+  # Modify PATH so I don't have to prefix every `b2` call.
+  - PATH=$PATH:$BASE_PATH/bin
+  - cd $BASE_PATH
+
+script:
+  - cd $BASE_PATH/boost_example/ && b2
+  # TODO add Boost.test tests.
+  # TODO add artefact testing.
+  - echo 1 2 3 | bin/**/debug/./boost_example
+  - echo 1 2 3 | bin/**/release/./boost_example
