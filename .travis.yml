@@ -27,4 +27,8 @@ before_install:
   - cd $BASE_PATH
 
 script:
-  - cd $BASE_PATH/boost_example/ && b2 && echo 1 2 3 | bin/gcc-8.2.0/debug/./boost_example
+  - cd $BASE_PATH/boost_example/ && b2
+  # TODO add Boost.test tests.
+  # TODO add artefact testing.
+  - echo 1 2 3 | bin/**/debug/./boost_example
+  - echo 1 2 3 | bin/**/release/./boost_example
