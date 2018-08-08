@@ -5,6 +5,9 @@ compiler:
   - gcc
 
 before_install:
+  # $HOME = `/home/travis/`.
+  # BASE_PATH = `/home/travis/build/<github_user>/<repo>/` ie. code workdir.
+  - BASE_PATH=$(pwd)
   - sudo apt-get install libboost-all-dev
   # FIXME: don't have a debian system handy and my google-fu has failed me to
   # find what boost-build is called in the `apt` package manager. Hence the
@@ -13,7 +16,8 @@ before_install:
   - tar -xf boost-1.67.0.tar.gz
   - cd build-boost-1.67.0/
   - ./bootstrap.sh
-  - ./b2 install --prefix=$HOME
+  - ./b2 install --prefix=$BASE_PATH
+  - cd $BASE_PATH
 
 script:
-  - cd boost_example/ && b2 toolset=gcc && echo 1 2 3 | bin/gcc-8.2.0/debug/./boost_example
+  - cd $BASE_PATH/boost_example/ && b2 toolset=gcc && echo 1 2 3 | bin/gcc-8.2.0/debug/./boost_example
