@@ -6,8 +6,8 @@ Test program to cut my teeth on some C++.
 Areas of learning
 -----------------
 
-- Get to grips with cmake.
-- Try out: Catch, unittest framework.
+- Get to grips with [CMake].
+- Try out: [Github: Catch], unittest framework.
 
 Initial Aim:
 ------------
@@ -29,6 +29,8 @@ that they scored an A
 How to Build
 ------------
 
+See: [Root README] for Travis build status.
+
 - Create a build folder (currently .gitignore "build/").
 - cd <build_folder>
 - cmake <path/to/project/root>
@@ -43,3 +45,7 @@ An easy one liner if you have created the build directory at project root.
 cmake .. && make clean && make && make test
 ```
 
+
+[CMake]: https://cmake.org
+[Github: Catch]: https://github.com/catchorg/Catch2
+[Root README]: ../README.md
