@@ -6,6 +6,14 @@ compiler:
 
 before_install:
   - sudo apt-get install libboost-all-dev
+  # FIXME: don't have a debian system handy and my google-fu has failed me to
+  # find what boost-build is called in the `apt` package manager. Hence the
+  # manual install.
+  - wget https://github.com/boostorg/build/archive/boost-1.67.0.tar.gz
+  - tar -xf boost-1.67.0.tar.gz
+  - cd build-boost-1.67.0/
+  - ./bootstrap.sh
+  - ./b2 install --prefix=$HOME
 
 script:
   - cd boost_example/ && b2 toolset=gcc && echo 1 2 3 | bin/gcc-8.2.0/debug/./boost_example
