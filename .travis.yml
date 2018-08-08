@@ -1,0 +1,11 @@
+# https://docs.travis-ci.com/user/languages/cpp/
+language: cpp
+
+compiler:
+  - gcc
+
+before_install:
+  - sudo apt-get install libboost-all-dev
+
+script:
+  - cd boost_example/ && b2 toolset=gcc && echo 1 2 3 | bin/gcc-8.2.0/debug/./boost_example
