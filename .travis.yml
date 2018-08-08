@@ -4,11 +4,20 @@ language: cpp
 compiler:
   - gcc
 
+addons:
+  apt:
+    packages:
+      - libboost-all-dev
+
 before_install:
+  ## Base Config ##
+
   # $HOME = `/home/travis/`.
   # BASE_PATH = `/home/travis/build/<github_user>/<repo>/` ie. code workdir.
   - BASE_PATH=$(pwd)
-  - sudo apt-get install libboost-all-dev
+
+  ## Setup for Boost.Build projects ##
+
   # FIXME: don't have a debian system handy and my google-fu has failed me to
   # find what boost-build is called in the `apt` package manager. Hence the
   # manual install.
@@ -26,9 +35,20 @@ before_install:
   - PATH=$PATH:$BASE_PATH/bin
   - cd $BASE_PATH
 
+  ## Setup for CMake projects ##
+  - mkdir -p $BASE_PATH/graded_program/build/
+
 script:
+  ## Building boost_example/ via Build.Boost ##
+
   - cd $BASE_PATH/boost_example/ && b2
   # TODO add Boost.test tests.
   # TODO add artefact testing.
   - echo 1 2 3 | bin/**/debug/./boost_example
   - echo 1 2 3 | bin/**/release/./boost_example
+
+  ## Building graded_program/ via cmake ##
+  - cd $BASE_PATH/graded_program/build/
+  - cmake .. && make clean && make
+  - make test
+
